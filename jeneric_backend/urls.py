@@ -15,9 +15,10 @@ Including another URLconf
 """
 # from django.contrib import admin
 from django.urls import path
-from backend.views import upload
+from backend.views import upload, show_contents
 
 urlpatterns = [
     #    path('admin/', admin.site.urls),
-    path('form/', upload)
+    path('form/', upload),
+    path('<int:client_num>/contents/', show_contents),
 ]

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Contents</title>
+</head>
+<body>
+<table style="border:1px solid black;">
+    <tr>
+        <th style="border:1px solid black;">ID</th>
+        <th style="border:1px solid black;">Name</th>
+        <th style="border:1px solid black;">Address</th>
+        <th style="border:1px solid black;">Mobile</th>
+        <th style="border:1px solid black;">Image</th>
+    </tr>
+    <tr></tr>
+        {% for upld in uploads %}
+        <tr style="border:1px solid black;">
+            <td style="border:1px solid black;">{{ upld.id }}</td>
+            <td style="border:1px solid black;"> {{ upld.name }}</td>
+            <td style="border:1px solid black;">{{ upld.address }} </td>
+            <td style="border:1px solid black;">{{  upld.mobile }} </td>
+            <td style="border:1px solid black;"> <img src="{{upld.image_loc}}" style="width:100px" /></td>
+        </tr>
+        {% endfor %}
+</table>
+</body>
+</html>
