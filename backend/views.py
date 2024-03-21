@@ -18,13 +18,13 @@ def upload(request: HttpRequest) -> HttpResponse:
             for chunk in the_file.chunks():
                 destination.write(chunk)
 
-    upload_record = Upload(client_number=client_number,name=name,
-                    address=address,mobile_number=mobile, file_location=dest_filename)
+    upload_record = Upload(client_number=client_number, name=name,
+                    address=address, mobile_number=mobile, file_location=f"/static/{the_file.name}")
     upload_record.save()
     data = {"name": name,
             "address": address,
             "mobile": mobile,
-            "image_loc": "/static/" + dest_filename}
+            "image_loc":  "/static/" + dest_filename}
 
     return render(request, 'formed.html', data)
 
@@ -37,7 +37,7 @@ def show_contents(request: HttpRequest, client_num: int) -> HttpResponse:
                "name": upld.name,
                "address": upld.address,
                "mobile": upld.mobile_number,
-               "image_loc": "/static/" + upld.file_location}
+               "image_loc": upld.file_location}
         data.append(obj)
 
     return render(request, 'contents.html', {"uploads":data})
